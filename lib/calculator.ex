@@ -4,7 +4,7 @@ defmodule Calculator do
   end
 
   defp loop(current_value) do
-    new_valuw = receive do
+    new_value = receive do
       {:value, client_id} -> send(client_id, {:response, current_value})
         current_value
 
@@ -16,7 +16,7 @@ defmodule Calculator do
       invalid_request -> IO.puts("Invalid reequest #{inspect invalid_request}")
         current_value
     end
-    loop(new_valuw)
+    loop(new_value)
   end
 
 
